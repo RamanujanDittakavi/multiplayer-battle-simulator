@@ -266,7 +266,14 @@ io.on('connection', (socket) => {
               name: room.players[1].name,
               team: room.gameState.teams.player2
             }
-          }
+          },
+          // **THIS IS THE FIX**
+          // Initialize votes and voters for the poll to function correctly.
+          votes: {
+            player1: 0,
+            player2: 0
+          },
+          voters: []
         };
         
         await pollsDb.insert(poll);
