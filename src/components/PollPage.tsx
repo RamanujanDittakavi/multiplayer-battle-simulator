@@ -41,6 +41,9 @@ const roles = [
   { key: 'support2', name: 'Support 2', color: 'bg-purple-400' }
 ];
 
+// ✅ Use environment variable instead of hardcoded localhost
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 const PollPage: React.FC<PollPageProps> = ({ pollId }) => {
   const [poll, setPoll] = useState<Poll | null>(null);
   const [loading, setLoading] = useState(true);
@@ -53,7 +56,7 @@ const PollPage: React.FC<PollPageProps> = ({ pollId }) => {
 
   const fetchPoll = async () => {
     try {
-      const response = await fetch(`http://localhost:3001/api/poll/${pollId}`);
+      const response = await fetch(`${API_URL}/api/poll/${pollId}`);
       const data = await response.json();
       
       if (response.ok) {
@@ -72,7 +75,7 @@ const PollPage: React.FC<PollPageProps> = ({ pollId }) => {
     if (hasVoted) return;
     
     try {
-      const response = await fetch(`http://localhost:3001/api/vote/${pollId}`, {
+      const response = await fetch(`${API_URL}/api/vote/${pollId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ vote: player })

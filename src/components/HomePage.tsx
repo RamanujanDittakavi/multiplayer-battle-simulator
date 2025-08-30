@@ -5,6 +5,9 @@ interface HomePageProps {
   onJoinGame: (roomId: string, playerId: string) => void;
 }
 
+// ✅ Use environment variable for backend URL
+const API_URL = import.meta.env.VITE_BACKEND_URL;
+
 const HomePage: React.FC<HomePageProps> = ({ onJoinGame }) => {
   const [mode, setMode] = useState<'menu' | 'create' | 'join'>('menu');
   const [formData, setFormData] = useState({
@@ -25,7 +28,7 @@ const HomePage: React.FC<HomePageProps> = ({ onJoinGame }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/create-room', {
+      const response = await fetch(`${API_URL}/api/create-room`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -58,7 +61,7 @@ const HomePage: React.FC<HomePageProps> = ({ onJoinGame }) => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3001/api/join-room', {
+      const response = await fetch(`${API_URL}/api/join-room`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

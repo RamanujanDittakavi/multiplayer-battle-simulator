@@ -60,7 +60,9 @@ function App() {
 
   useEffect(() => {
     if (currentPage === 'game' && roomId && playerId) {
-      const newSocket = io('http://localhost:3001');
+      const API_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3001";
+const newSocket = io(API_URL);
+
       setSocket(newSocket);
 
       newSocket.emit('join-game', { roomId, playerId });

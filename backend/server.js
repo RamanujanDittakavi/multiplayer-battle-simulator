@@ -21,9 +21,9 @@ const io = new Server(server, {
 app.use(cors());
 app.use(express.json());
 
-// In-memory database setup
-const roomsDb = Datastore.create();
-const pollsDb = Datastore.create();
+const roomsDb = Datastore.create({ filename: './data/rooms.db', autoload: true });
+const pollsDb = Datastore.create({ filename: './data/polls.db', autoload: true });
+
 
 // Naruto characters database
 const narutoCharacters = [
