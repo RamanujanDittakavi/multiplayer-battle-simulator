@@ -1,9 +1,14 @@
+/*
+Battle Simulator Real-Time Game
+Copyright (c) 2025 Jagan Mohan Rao Kolli
+Licensed under the MIT License - see the LICENSE file for details.
+*/
+
 import React, { useState, useEffect } from 'react';
 import { io, Socket } from 'socket.io-client';
 import HomePage from './components/HomePage';
 import GameRoom from './components/GameRoom';
 import PollPage from './components/PollPage';
-
 interface Player {
   id: string;
   name: string;

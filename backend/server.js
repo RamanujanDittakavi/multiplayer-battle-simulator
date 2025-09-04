@@ -1,3 +1,9 @@
+/*
+Battle Simulator Real-Time Game
+Copyright (c) 2025 Jagan Mohan Rao Kolli
+Licensed under the MIT License - see the LICENSE file for details.
+*/
+
 import express from 'express';
 import { createServer } from 'http';
 import { Server } from 'socket.io';
